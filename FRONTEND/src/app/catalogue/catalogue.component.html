@@ -1,0 +1,6 @@
+<h2>Catalogue produit :</h2>
+<p> nom de la recherche : {{searchProduct}}</p>
+
+<div *ngFor="let produit of produit$ | async " >
+    <p>Nom : {{produit.name}} - Prix : {{produit.price}} - Quantitée : {{produit.quantity}}</p>
+</div>
