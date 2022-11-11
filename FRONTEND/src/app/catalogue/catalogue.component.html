@@ -2,5 +2,13 @@
 <p> nom de la recherche : {{searchProduct}}</p>
 
 <div *ngFor="let produit of produit$ | async " >
-    <p>Nom : {{produit.name}} - Prix : {{produit.price}} - Quantitée : {{produit.quantity}}</p>
+    <div class="card col-md-3">
+        <h5>{{produit.name}}</h5>
+        <img class="rounded img-thumbnail" src="{{produit.image}}" alt="">
+        <p><strong>Description : </strong> {{produit.description}}</p>
+        <p><strong>Price:</strong> {{produit.price}}</p>
+        <!-- <p>Quantité : {{produit.quantity}}</p> -->
+        <!-- <button class="btn btn-primary" (click)=addtocart(item)>Add to cart</button> -->
+        <button class="btn btn-info" >Ajouter au panier</button>
+    </div>
 </div>

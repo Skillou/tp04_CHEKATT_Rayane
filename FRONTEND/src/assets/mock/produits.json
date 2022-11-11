@@ -1,31 +1,43 @@
 [
     {
         "name": "Manga",
+        "description": "Un manga est une bande dessinée japonaise",
+        "image": "https://www.shin-sekai.fr/54078-large_default/one-piece-manga-japonais-tome-100.jpg",
         "quantity": 2,
         "price": 6.90
     },
     {
         "name": "Livre",
+        "description": "Un livre est un document écrit formant unité et conçu comme tel, composé de pages reliées les unes aux autres",
+        "image": "https://t4.ftcdn.net/jpg/02/18/32/95/360_F_218329564_fasjU4u5Uv8aRzMRhawQzbR5ejzftLSO.jpg",
         "quantity": 2,
         "price": 3.15
     },
     {
         "name": "CD",
+        "description": "Un disque compact, le plus souvent désigné par son sigle anglais CD ",
+        "image": "https://thumbs.dreamstime.com/b/disque-compact-de-cd-ou-dvd-101337299.jpg",
         "quantity": 1,
         "price": 5
     },
     {
         "name": "Voiture",
+        "description": "Une automobile est un véhicule à roues, motorisé et destiné au transport terrestre de quelques personnes et de leurs bagages" ,
+        "image": "https://cdn.motor1.com/images/mgl/qNAOJ/s1/candidate-plus-belle-voiture-de-l-annee-2019.jpg",
         "quantity": 1,
         "price": 1000
     },
     {
         "name": "Train",
+        "description": "Le train est un matériel roulant ferroviaire assurant le transport de personnes ou de marchandises sur une ligne de chemin de fer",
+        "image": "https://www.economie.gouv.fr/files/styles/image_contenu_article_espace/public/files/directions_services/dgccrf/imgs/fiches_pratiques/Train.jpg?itok=raocKE8F",
         "quantity": 3,
         "price": 104000
     },
     {
         "name": "Jeu",
+        "description": "On peut définir le jeu comme une activité d'ordre psychique ou bien physique pensée pour divertir et improductive à court terme",
+        "image": "https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Ffac.2F2020.2F03.2F23.2Fb3f0af76-0acf-41a4-a3e1-5444b26f8102.2Ejpeg/1200x900/quality/80/crop-from/center/voici-les-meilleurs-jeux-de-societe-gratuits-pour-mieux-vivre-le-confinement.jpeg",
         "quantity": 1,
         "price": 15.45
     }

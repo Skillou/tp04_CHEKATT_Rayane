@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { RechercheProduitsComponent } from './recherche-produits/recherche-produits.component';
 import { PipeRechercheProduitPipe } from './pipe-recherche-produit.pipe';
+import { PanierComponent } from './panier/panier.component';
+import { ProduitDetailComponent } from './produit-detail/produit-detail.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { PipeRechercheProduitPipe } from './pipe-recherche-produit.pipe';
     CatalogueComponent,
     RechercheProduitsComponent,
     PipeRechercheProduitPipe,
+    PanierComponent,
+    ProduitDetailComponent,
   ],
   imports: [
     HttpClientModule,
