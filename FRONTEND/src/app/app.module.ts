@@ -16,6 +16,7 @@ import { RechercheProduitsComponent } from './recherche-produits/recherche-produ
 import { PipeRechercheProduitPipe } from './pipe-recherche-produit.pipe';
 import { PanierComponent } from './panier/panier.component';
 import { ProduitDetailComponent } from './produit-detail/produit-detail.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ProduitDetailComponent } from './produit-detail/produit-detail.componen
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
