@@ -1,2 +1,22 @@
-<h2> Mon panier :</h2>
 
+
+<div>
+   
+    <h2> Mon panier :</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Reference</th>
+                <th>Titre</th>
+                <th>Prix</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let produit of produits">
+                <td>{{produit.image}}</td>
+                <td>{{produit.price}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
