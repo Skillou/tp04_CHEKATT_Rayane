@@ -7,9 +7,9 @@ import { CatalogueComponent } from './catalogue/catalogue.component';
 
 const routes: Routes = [
   { path: '', component: AppComponent },
-    { path: './saisie-client/:id', component: FormClientComponent },
-    {path: './catalogue', component: CatalogueComponent},
-    {path: './panier', component: PanierComponent},
+  { path: './saisie-client/:id', component: FormClientComponent },
+  { path: './catalogue', component: CatalogueComponent},
+  { path: './panier', component: PanierComponent},
 ];
 
 @NgModule({

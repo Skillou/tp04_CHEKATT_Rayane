@@ -1,8 +1,8 @@
 <h2>Catalogue produit :</h2>
 <p> nom de la recherche : {{searchProduct}}</p>
 
-<div *ngFor="let produit of produit$ | async " >
-    <div class="card col-md-3">
+<div class="center" *ngFor="let produit of produit$ | async " >
+    <div class="card col-md-4">
         <h5>{{produit.name}}</h5>
         <img class="rounded img-thumbnail" src="{{produit.image}}" alt="">
         <p><strong>Description : </strong> {{produit.description}}</p>
