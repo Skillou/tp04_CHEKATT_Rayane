@@ -1,18 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Produit } from '../model/Produit';
+import {Observable} from "rxjs";
+import {Store} from "@ngxs/store";
+import {RemoveProduct} from "../actions/panier-action";
 
 @Component({
   selector: 'app-panier',
   templateUrl: './panier.component.html',
   styleUrls: ['./panier.component.css']
 })
-export class PanierComponent implements OnInit {
+export class PanierComponent {
 
-  public produits : Produit[] | undefined;
+  produits$: Observable<Produit[]>;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private store: Store) {
+    this.produits$ = this.store.select(state => state.panier.produits);
   }
 
+  RemoveProductCart(productIndex: Number) {
+    this.store.dispatch(new RemoveProduct(productIndex));
+  }
 }

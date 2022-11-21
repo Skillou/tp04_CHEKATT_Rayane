@@ -1,0 +1,14 @@
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  width: 25rem;
+}
+
+.title{
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+}
