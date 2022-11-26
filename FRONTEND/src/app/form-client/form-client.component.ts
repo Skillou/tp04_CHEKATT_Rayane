@@ -37,10 +37,11 @@ export class FormClientComponent implements OnInit {
     street: ['', Validators.required],
     city: ['', Validators.required],
     zipCode: ['', [Validators.required, Validators.pattern(/(?:0[1-9]|[13-8][0-9]|2[ab1-9]|9[0-5])(?:[0-9]{3})?|9[78][1-9](?:[0-9]{2})?/)]],
-    login: ['', [Validators.required, Validators.min(5)]],
-    password: ['', Validators.required],
+    login: ['', [Validators.required, Validators.pattern('\\S{5}\\S*')]],
+    password: ['', Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$')],
     confirmPassword: ['', Validators.required],
   });
+
   constructor(private fb: FormBuilder) { }
 
   get civility() { return this.clientForm.get('civility'); }
@@ -82,6 +83,8 @@ export class FormClientComponent implements OnInit {
       this.client.zipCode = this.clientForm.get('zipCode')?.value;
       this.client.login = this.clientForm.get('login')?.value;
       this.client.password = this.clientForm.get('password')?.value;
+
+      // this.router.navigate(['/client/result']);
     }
     else {
       console.log(this.clientForm)

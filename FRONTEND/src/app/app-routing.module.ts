@@ -1,19 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { FormClientComponent } from './form-client/form-client.component';
-import { PanierComponent } from './panier/panier.component';
-import { CatalogueComponent } from './catalogue/catalogue.component';
+import { HomeComponent } from "./home/home.component";
+import {CatalogueComponent} from "./catalogue/catalogue.component";
+import {FormClientComponent} from "./form-client/form-client.component";
 
 const routes: Routes = [
-  { path: '', component: AppComponent },
-    { path: './saisie-client/:id', component: FormClientComponent },
-    {path: './catalogue', component: CatalogueComponent},
-    {path: './panier', component: PanierComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'catalogue', component: CatalogueComponent },
+  { path: 'client/register', component: FormClientComponent },
 ];
 
 @NgModule({
-  declarations: [],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

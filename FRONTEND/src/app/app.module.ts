@@ -16,6 +16,7 @@ import { PipeRechercheProduitPipe } from './pipe-recherche-produit.pipe';
 import { PanierComponent } from './panier/panier.component';
 import { ProduitDetailComponent } from './produit-detail/produit-detail.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AppRoutingModule } from './app-routing.module';
     PipeRechercheProduitPipe,
     PanierComponent,
     ProduitDetailComponent,
+    HomeComponent,
   ],
   imports: [
     HttpClientModule,
