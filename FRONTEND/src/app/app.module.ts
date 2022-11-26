@@ -5,18 +5,17 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
-import { FormClientComponent } from './client/form-client/form-client.component';
+import { FormClientComponent } from './form-client/form-client.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DetailClientComponent } from './client/detail-client/detail-client.component';
+import { DetailClientComponent } from './detail-client/detail-client.component';
 import { DirClientDirective } from './dir-client.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CatalogueComponent } from './catalog/catalogue/catalogue.component';
-import { RechercheProduitsComponent } from './catalog/recherche-produits/recherche-produits.component';
+import { CatalogueComponent } from './catalogue/catalogue.component';
+import { RechercheProduitsComponent } from './recherche-produits/recherche-produits.component';
 import { PipeRechercheProduitPipe } from './pipe-recherche-produit.pipe';
 import { PanierComponent } from './panier/panier.component';
-import { ProduitDetailComponent } from './catalog/produit-detail/produit-detail.component';
+import { ProduitDetailComponent } from './produit-detail/produit-detail.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +30,6 @@ import { HomeComponent } from './home/home.component';
     PipeRechercheProduitPipe,
     PanierComponent,
     ProduitDetailComponent,
-    HomeComponent,
   ],
   imports: [
     HttpClientModule,

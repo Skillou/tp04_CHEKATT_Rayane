@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from "./home/home.component";
-import {CatalogueComponent} from "./catalog/catalogue/catalogue.component";
-import {FormClientComponent} from "./client/form-client/form-client.component";
+import { AppComponent } from './app.component';
+import { FormClientComponent } from './form-client/form-client.component';
+import { PanierComponent } from './panier/panier.component';
+import { CatalogueComponent } from './catalogue/catalogue.component';
 
 const routes: Routes = [
-  { path: '', component:  HomeComponent},
-  { path: 'home', component:  HomeComponent},
-  { path: 'client-form', component:  FormClientComponent},
-  { path: 'catalog', component: CatalogueComponent },
-  { path: 'panier', loadChildren: () => import('./panier/panier.module').then(m => m.PanierModule) },
+  { path: '', component: AppComponent },
+    { path: './saisie-client/:id', component: FormClientComponent },
+    {path: './catalogue', component: CatalogueComponent},
+    {path: './panier', component: PanierComponent},
 ];
 
 @NgModule({

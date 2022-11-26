@@ -15,6 +15,13 @@ export class ClientServiceService {
 
   env = environment;
 
+  // produits: Array<Produit> = [
+  //   { name: 'Manga', quantity: 2, price: 6.90 },
+  //   { name: 'Livre', quantity: 7, price: 4 },
+  //   { name: 'CD', quantity: 1, price: 5 },
+  // ];
+
+
   public postClient(){
 
   };
@@ -28,6 +35,7 @@ export class ClientServiceService {
   };
 
   public getCatalogue() : Observable<Produit[]> {
+    // return of(this.produits);
     return this.http.get<Produit[]>(this.env.produits);
   };
 }

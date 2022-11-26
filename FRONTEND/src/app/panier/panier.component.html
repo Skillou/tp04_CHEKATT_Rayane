@@ -1,23 +1,22 @@
-<div class="container">
-  <h2>Mon panier</h2>
 
-  <div *ngIf="(produits$ | async)?.length == 0">
-    <p>Le panier est vide</p>
-  </div>
 
-  <ul class="media-list">
-    <li *ngFor="let produit of produits$| async; index as i" class="media">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="media-left">
-            <img class="media-object" src="{{produit.image}}" alt="...">
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading">{{produit.name}}</h4>
-            <p>{{produit.description}}</p>
-            <p>Prix : {{produit.price}} €</p>
-          </div>
-        </div>
-      </div>
-  </ul>
+<div>
+   
+    <h2> Mon panier :</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Reference</th>
+                <th>Titre</th>
+                <th>Prix</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let produit of produits">
+                <td>{{produit.image}}</td>
+                <td>{{produit.price}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
