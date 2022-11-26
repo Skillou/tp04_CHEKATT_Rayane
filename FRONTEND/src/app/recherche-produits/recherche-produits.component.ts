@@ -8,7 +8,6 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class RechercheProduitsComponent implements OnInit {
 
   searchText: string = "";
-
   @Output() newSearchEvent = new EventEmitter<string>();
 
   constructor() { }
@@ -17,7 +16,11 @@ export class RechercheProduitsComponent implements OnInit {
 
   searchChange() {
     this.searchText;
-    console.log(this.searchText);
     this.newSearchEvent.emit(this.searchText);
   }
+
+  OnClickSearch() {
+    this.newSearchEvent.emit(this.searchText);
+  }
+
 }

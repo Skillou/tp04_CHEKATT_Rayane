@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import {ClientServiceService} from '../client-service.service'
 import { Produit } from '../model/Produit';
+import {CatalalogueService} from "../utils/Services/catalalogue.service";
 
 @Component({
   selector: 'app-catalogue',
@@ -12,14 +13,20 @@ import { Produit } from '../model/Produit';
 export class CatalogueComponent implements OnInit {
 
   @Input() searchProduct : string | undefined;
-  
-  produit$?: Observable<Produit[]>;
 
-  constructor(public clientService: ClientServiceService) { 
+  produit$?: Observable<Produit[]>;
+  category: string = '';
+
+  SearchProduct(search: string) {
+    this.searchProduct = search;
+    console.log("Recherche :" + this.searchProduct)
+  }
+
+  constructor(public catalalogueService: CatalalogueService) {
     // this.clientService.getCatalogue().subscribe(v=>console.log(v));
   }
 
   ngOnInit(): void {
-    this.produit$ = this.clientService.getCatalogue();
+    this.produit$ = this.catalalogueService.getCatalogue();
   }
 }

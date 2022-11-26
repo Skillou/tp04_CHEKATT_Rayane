@@ -1,15 +1,20 @@
 export class Produit {
-    public name: string;
-    public image: string;
-    public quantity: number;
-    public description: string;
-    public price: number;
-    
-    constructor(produit: Produit){
-        this.name = produit.name;
-        this.image = produit.image;
-        this.quantity = produit.quantity;
-        this.description = produit.description;
-        this.price = produit.price;
-    }
+  public id: number;
+  public name: string;
+  public description: string;
+  public price: number;
+  public category: string;
+  public image: string;
+  public summary: string;
+
+
+  constructor(produit: Produit) {
+    this.id = produit.id;
+    this.name = produit.name;
+    this.description = produit.description;
+    this.price = produit.price;
+    this.category = produit.category;
+    this.image = produit.image;
+    this.summary = produit.summary;
+  }
 }
