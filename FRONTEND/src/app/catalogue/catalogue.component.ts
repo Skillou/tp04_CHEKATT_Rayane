@@ -1,8 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import {ClientServiceService} from '../client-service.service'
-import { Produit } from '../model/Produit';
-import {CatalalogueService} from "../utils/Services/catalalogue.service";
+import {Component} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Produit} from '../model/Produit';
+import {RechercheProduitsService} from "../utils/Services/recherche-produits.service";
 
 @Component({
   selector: 'app-catalogue',
@@ -10,23 +9,15 @@ import {CatalalogueService} from "../utils/Services/catalalogue.service";
   styleUrls: ['./catalogue.component.css'],
 
 })
-export class CatalogueComponent implements OnInit {
+export class CatalogueComponent {
 
-  @Input() searchProduct : string | undefined;
+  public readonly produits$: Observable<Produit[]>;
 
-  produit$?: Observable<Produit[]>;
-  category: string = '';
-
-  SearchProduct(search: string) {
-    this.searchProduct = search;
-    console.log("Recherche :" + this.searchProduct)
+  constructor(private readonly service: RechercheProduitsService) {
+    this.produits$ = this.service.produits$;
   }
 
-  constructor(public catalalogueService: CatalalogueService) {
-    // this.clientService.getCatalogue().subscribe(v=>console.log(v));
-  }
-
-  ngOnInit(): void {
-    this.produit$ = this.catalalogueService.getCatalogue();
+  public getProductId(_: number, item: Produit): number {
+    return item.id;
   }
 }
