@@ -1,129 +1,142 @@
 <div class="container">
   <h2>Formulaire client :</h2>
 
-  <!-- Le faire en fonction du choix de la page  -->
-
   <form novalidate [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+    <div class="container mt-5 mb-5 d-flex justify-content-center">
+      <div class="card px-1 py-4">
+        <div class="card-body">
+          <h6 class="card-title mb-3">Création du compte</h6>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <div>
+                  <select class="form-control" formControlName="civility">
+                    <option value="" disabled selected>Civilité</option>
+                    <option *ngFor="let civility of civilities; let i = index" [value]="civility">
+                      {{civility}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Nom" formControlName="lastName" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Prénom" formControlName="firstName" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="email" class="form-control" placeholder="E-mail" formControlName="email"
+                         pattern="[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" class="form-control"
+                         placeholder="Téléphone" formControlName="telphone" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Rue" formControlName="street" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Ville" formControlName="city" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text"
+                         class="form-control" placeholder="Code postal" formControlName="zipCode" ngModel required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Nom d'utilisateur" formControlName="login"
+                         required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="password" class="form-control" placeholder="Mot de passe" formControlName="password"
+                         required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="password" class="form-control"
+                         placeholder="Confirmer le mot de passe" formControlName="confirmPassword" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class=" d-flex flex-column text-center px-5 mt-3 mb-3">
 
-    <div class="mb-3">
-
-      <div>
-        <label for="civility">Civilité :</label>
-        <select class="form-control" formControlName="civility">
-          <option *ngFor="let civility of civilities; let i = index" [value]="civility">
-            {{civility}}
-          </option>
-        </select>
-      </div>
-
-      <div>
-        <label for="lastname">Nom :</label>
-        <input type="text" class="form-control"
-               placeholder="Nom" formControlName="lastName"
-               required
-               [ngClass]="{'is-invalid' : !lastName?.valid && validate}">
-        <div class="invalid-feedback">
-          Entrer votre nom
+            <p style="white-space: nowrap;">
+              <small class="agree-text">En vous inscrivant, vous acceptez les </small>
+              <a href="#" class="terms">Conditions d'utilisation</a>
+              <small class="agree-text">et la </small>
+              <a href="#" class="terms">Politique de confidentialité</a>
+              <small class="agree-text">, notamment</small>
+              <a href="#" class="terms">l'Utilisation des cookies.</a>
+            </p>
+          </div>
+          <button class="btn btn-success btn-block confirm-button" type="submit" [disabled]="!clientForm.valid">
+            Soumettre
+          </button>
         </div>
       </div>
-
-      <div>
-        <label for="firstname">Prénom :</label>
-        <input type="text" class="form-control" placeholder="Prénom" formControlName="firstName"
-               required
-               [ngClass]="{'is-invalid' : !firstName?.valid && validate}">
-        <div class="invalid-feedback">
-          Entrer votre prénom
-        </div>
-      </div>
-
-      <div>
-        <label for="mail">E-mail :</label>
-        <input type="email" class="form-control" placeholder="E-mail" formControlName="email"
-               pattern="[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+" required
-               [ngClass]="{'is-invalid' : !email?.valid && validate}">
-        <div class="invalid-feedback">
-          Entrer votre adresse email
-        </div>
-      </div>
-
-      <div>
-        <label for="telephone">Téléphone :</label>
-        <input type="text" class="form-control"
-               placeholder="Téléphone" formControlName="telphone"
-               required
-               [ngClass]="{'is-invalid' : !telphone?.valid && validate}">
-        <div class="invalid-feedback" appDirClient length="5">
-          Entrer votre numéro de téléphone
-        </div>
-      </div>
-
-      <div>
-        <label for="street">Rue :</label>
-        <input type="text" class="form-control" placeholder="Rue" formControlName="street"
-               required [ngClass]="{'is-invalid' : !street?.valid && validate}">
-        <div class="invalid-feedback">
-          Entrer le nom de la rue
-        </div>
-      </div>
-
-      <div>
-        <label for="city">Ville :</label>
-        <input type="text" class="form-control" placeholder="Ville" formControlName="city"
-               required [ngClass]="{'is-invalid' : !city?.valid && validate}">
-        <div class="invalid-feedback">
-          Entrer la ville
-        </div>
-      </div>
-
-      <div>
-        <label for="zipcode">Code postal :</label>
-        <input type="text" z
-               class="form-control" placeholder="Code postal" formControlName="zipCode" ngModel
-               required
-               [ngClass]="{'is-invalid' : !zipCode?.valid && validate}">
-        <div class="invalid-feedback" appDirClient length="5">
-          Entrer votre code postal
-        </div>
-      </div>
-
-      <div>
-        <label for="login">Nom d'utilisateur :</label>
-        <input type="text" class="form-control" placeholder="Nom d'utilisateur"
-               formControlName="login" required
-               [ngClass]="{'is-invalid' : !login?.valid && validate}">
-        <div class="invalid-feedback">
-          Entrer le nom d'utilisateur
-        </div>
-      </div>
-
-      <div>
-        <label for="password">Mot de passe :</label>
-        <input type="password" class="form-control" placeholder="Mot de passe"
-               formControlName="password" required
-               [ngClass]="{'is-invalid' : !password?.valid && validate}">
-        <div class="invalid-feedback">
-          Entrer un mot de passe
-        </div>
-      </div>
-
-      <div>
-        <label for="confirmpassword">Confirmer le mot de passe :</label>
-        <input type="password" class="form-control"
-               placeholder="Confirmer le mot de passe" formControlName="confirmPassword" required
-               [ngClass]="{'is-invalid' : !confirmPassword?.valid && validate}">
-        <div class="invalid-feedback">
-          Veuillez confirmer votre mot de passe
-        </div>
-      </div>
-
     </div>
 
-    <button type="submit" [disabled]="!clientForm.valid">Soumettre</button>
-
-    <hr>
 
   </form>
-</div>
-<!--<app-detail-client [detailClient]="client"></app-detail-client>-->
+
+
+
 

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import {DetailClientComponent} from "../detail-client/detail-client.component";
 import {FormClientComponent} from "./form-client.component";
 import {RouterModule, Routes} from "@angular/router";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 const routes: Routes = [
   { path: 'register', component: FormClientComponent },
@@ -17,6 +19,9 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ]
 })
 
