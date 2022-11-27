@@ -1,6 +1,7 @@
 import { Client } from '../model/Client';
 import { Component, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {ClientService} from "../Utils/Services/client.service";
 
 @Component({
   selector: 'app-form-client',
@@ -11,7 +12,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class FormClientComponent implements OnInit {
 
   validate: boolean = false;
-  civilities: string[] = ['Homme', 'Femme', 'Autres'];
+  civilities: string[] = ['M.', 'Mme.', 'Autres'];
 
   // client: Client = new Client();
 
@@ -38,11 +39,11 @@ export class FormClientComponent implements OnInit {
     city: ['', Validators.required],
     zipCode: ['', [Validators.required, Validators.pattern(/(?:0[1-9]|[13-8][0-9]|2[ab1-9]|9[0-5])(?:[0-9]{3})?|9[78][1-9](?:[0-9]{2})?/)]],
     login: ['', [Validators.required, Validators.pattern('\\S{5}\\S*')]],
-    password: ['', Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$')],
+    password: ['', Validators.required],
     confirmPassword: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private clientService: ClientService) { }
 
   get civility() { return this.clientForm.get('civility'); }
 
@@ -83,6 +84,8 @@ export class FormClientComponent implements OnInit {
       this.client.zipCode = this.clientForm.get('zipCode')?.value;
       this.client.login = this.clientForm.get('login')?.value;
       this.client.password = this.clientForm.get('password')?.value;
+
+      this.clientService.client = this.client;
 
       // this.router.navigate(['/client/result']);
     }

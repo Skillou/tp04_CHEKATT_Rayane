@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Produit} from '../model/Produit';
-import {RechercheProduitsService} from "../utils/Services/recherche-produits.service";
+import {RechercheProduitsService} from "../Utils/Services/recherche-produits.service";
 
 @Component({
   selector: 'app-catalogue',
