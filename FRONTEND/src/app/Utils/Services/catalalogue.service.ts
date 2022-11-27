@@ -16,4 +16,8 @@ export class CatalalogueService {
   public getCatalogue() : Observable<Produit[]> {
     return this.http.get<Produit[]>(this.env.produits);
   };
+
+  public getProductId(_: number, item: Produit): number {
+    return item.id;
+  }
 }

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {ClientService} from "../Utils/Services/client.service";
+import {ClientService} from "../../Utils/Services/client.service";
 
 @Component({
   selector: 'app-detail-client',
