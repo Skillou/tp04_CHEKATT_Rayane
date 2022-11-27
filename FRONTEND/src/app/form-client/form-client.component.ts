@@ -1,7 +1,8 @@
-import { Client } from '../model/Client';
-import { Component, OnInit, Output } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {Client} from '../model/Client';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {ClientService} from "../Utils/Services/client.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-form-client',
@@ -43,53 +44,89 @@ export class FormClientComponent implements OnInit {
     confirmPassword: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder, private clientService: ClientService) { }
+  constructor(private fb: FormBuilder, private clientService: ClientService, private router: Router,) {
+  }
 
-  get civility() { return this.clientForm.get('civility'); }
+  get civility() {
+    return this.clientForm.get('civility');
+  }
 
-  get firstName() { return this.clientForm.get('firstName'); }
+  get firstName() {
+    return this.clientForm.get('firstName');
+  }
 
-  get lastName() { return this.clientForm.get('lastName'); }
+  get lastName() {
+    return this.clientForm.get('lastName');
+  }
 
-  get email() { return this.clientForm.get('email'); }
+  get email() {
+    return this.clientForm.get('email');
+  }
 
-  get telphone() { return this.clientForm.get('telphone'); }
+  get telphone() {
+    return this.clientForm.get('telphone');
+  }
 
-  get street() { return this.clientForm.get('street'); }
+  get street() {
+    return this.clientForm.get('street');
+  }
 
-  get city() { return this.clientForm.get('city'); }
+  get city() {
+    return this.clientForm.get('city');
+  }
 
-  get zipCode() { return this.clientForm.get('zipCode'); }
+  get zipCode() {
+    return this.clientForm.get('zipCode');
+  }
 
-  get login() { return this.clientForm.get('login'); }
+  get login() {
+    return this.clientForm.get('login');
+  }
 
-  get password() { return this.clientForm.get('password'); }
+  get password() {
+    return this.clientForm.get('password');
+  }
 
-  get confirmPassword() { return this.clientForm.get('confirmPassword'); }
+  get confirmPassword() {
+    return this.clientForm.get('confirmPassword');
+  }
 
   ngOnInit(): void {
+    this.clientForm.valueChanges.subscribe(form => {
+      this.client.civility = form.civility ?? '';
+      this.client.firstName = form.firstName ?? '';
+      this.client.lastName = form.lastName ?? '';
+      this.client.email = form.email ?? '';
+      this.client.telphone = form.telphone ?? '';
+      this.client.street = form.street ?? '';
+      this.client.city = form.city ?? '';
+      this.client.zipCode = form.zipCode ?? '';
+      this.client.login = form.login ?? '';
+      this.client.password = form.password ?? '';
+    })
   }
 
   onSubmit(): void {
     this.validate = true;
     if (this.clientForm.valid) {
       console.log(this.clientForm.value);
-      this.client.civility = this.clientForm.get('civility')?.value;
-      this.client.firstName = this.clientForm.get('firstName')?.value;
-      this.client.lastName = this.clientForm.get('lastName')?.value;
-      this.client.email = this.clientForm.get('email')?.value;
-      this.client.telphone = this.clientForm.get('telphone')?.value;
-      this.client.street = this.clientForm.get('street')?.value;
-      this.client.city = this.clientForm.get('city')?.value;
-      this.client.zipCode = this.clientForm.get('zipCode')?.value;
-      this.client.login = this.clientForm.get('login')?.value;
-      this.client.password = this.clientForm.get('password')?.value;
+
+      // this.clientForm.valueChanges.subscribe(form => {
+      //     this.client.civility = this.clientForm.get('civility')?.value;
+      //     this.client.firstName = this.clientForm.get('firstName')?.value;
+      //     this.client.lastName = this.clientForm.get('lastName')?.value;
+      //     this.client.email = this.clientForm.get('email')?.value;
+      //     this.client.telphone = this.clientForm.get('telphone')?.value;
+      //     this.client.street = this.clientForm.get('street')?.value;
+      //     this.client.city = this.clientForm.get('city')?.value;
+      //     this.client.zipCode = this.clientForm.get('zipCode')?.value;
+      //     this.client.login = this.clientForm.get('login')?.value;
+      //     this.client.password = this.clientForm.get('password')?.value;
+      //   })
 
       this.clientService.client = this.client;
-
-      // this.router.navigate(['/client/result']);
-    }
-    else {
+      this.router.navigate(['/client/result']);
+    } else {
       console.log(this.clientForm)
     }
   }

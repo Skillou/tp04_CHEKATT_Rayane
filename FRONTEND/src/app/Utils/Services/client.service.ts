@@ -16,10 +16,6 @@ export class ClientService {
     return this._client;
   }
 
-  // public getClient(client: Client): Observable<Client>{
-  //   return this.getClient(client);
-  // };
-
   set client(value: Client) {
     this._client = value;
   }

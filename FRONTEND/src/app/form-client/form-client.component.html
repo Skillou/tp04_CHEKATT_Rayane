@@ -119,11 +119,11 @@
 
     </div>
 
-    <button>Soumettre</button>
+    <button type="submit" [disabled]="!clientForm.valid">Soumettre</button>
 
     <hr>
 
   </form>
 </div>
-<app-detail-client [detailClient]="client"></app-detail-client>
+<!--<app-detail-client [detailClient]="client"></app-detail-client>-->
 
