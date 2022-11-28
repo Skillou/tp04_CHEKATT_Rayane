@@ -1,56 +1,32 @@
-<!--<div class="container">-->
-<!--  <h1>Détail du produit</h1>-->
-<!--  <div *ngIf="produit" class="panel panel-default">-->
-<!--    <div class="panel-heading">-->
-<!--      <h3 class="panel-title">{{produit.name}}</h3>-->
-<!--    </div>-->
-<!--    <div class="panel-body">-->
-<!--      <div class="media-left">-->
-<!--        <img class="media-object" src="{{produit.image}}" alt="...">-->
-<!--      </div>-->
-<!--      <div class="media-body">-->
-<!--        <p>{{produit.description}}</p>-->
-<!--        <p>Catégorie : {{produit.category}}</p>-->
-<!--        <p>Prix : {{produit.price}} €</p>-->
-<!--        <p>{{produit.summary}}</p>-->
-<!--        &lt;!&ndash;        <button (click)="addToCart(product)" type="button" class="btn btn-primary">&ndash;&gt;-->
-<!--        &lt;!&ndash;          <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Ajouter au panier&ndash;&gt;-->
-<!--        &lt;!&ndash;        </button>&ndash;&gt;-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-
 <div class="container">
-    <h1>Détail du produit</h1>
+  <h1>Détail du produit</h1>
   <div *ngIf="produit" class="col-lg-8 border p-3 main-section bg-white">
     <div class="row m-0">
       <div class="col-lg-4 left-side-product-box pb-3">
-        <img src="http://nicesnippets.com/demo/pd-image1.jpg" class="border p-3">
+        <img src="{{produit.image}}" class="border p-3">
       </div>
       <div class="col-lg-8">
         <div class="right-side-pro-detail border p-3 m-0">
           <div class="row">
             <div class="col-lg-12">
-              <span>Who What Wear</span>
-              <p class="m-0 p-0">Women's Velvet Dress</p>
+              <span>{{produit.description}}</span>
+              <p class="m-0 p-0">{{produit.name}}</p>
             </div>
             <div class="col-lg-12">
-              <p class="m-0 p-0 price-pro">$30</p>
+              <p class="m-0 p-0 price-pro">{{produit.price}} €</p>
               <hr class="p-0 m-0">
             </div>
             <div class="col-lg-12 pt-2">
-              <h5>Product Detail</h5>
-              <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris.</span>
+              <h5>Information : </h5>
+              <span>{{produit.summary}}</span>
               <hr class="m-0 pt-2 mt-2">
             </div>
             <div class="col-lg-12">
-              <p class="tag-section"><strong>Tag : </strong><a href="">Woman</a><a href="">,Man</a></p>
+              <p class="tag-section">Tag :</p>
+              <div class="badge"> <span>{{produit.category}}</span> </div>
             </div>
             <div class="col-lg-12">
-              <h6>Quantity :</h6>
+              <h6>Quantité :</h6>
               <input type="number" class="form-control text-center w-100" value="1">
             </div>
             <div class="col-lg-12 mt-3">
@@ -69,5 +45,5 @@
         <h4>Plus de produits</h4>
       </div>
     </div>
-    </div>
   </div>
+</div>
