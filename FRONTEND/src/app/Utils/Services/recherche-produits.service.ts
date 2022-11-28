@@ -27,4 +27,8 @@ export class RechercheProduitsService {
   public searchProducts(term: string): void {
     this._termSubject$.next(term);
   }
+
+  public categoryChange(term: string): void {
+    this._termSubject$.next(term);
+  }
 }

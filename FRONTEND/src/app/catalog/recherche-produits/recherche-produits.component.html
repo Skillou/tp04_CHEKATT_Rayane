@@ -1,5 +1,9 @@
 <p>Recherche produits : </p>
 
+<div class="badge"><span>azeazeza</span></div>
+
+<p>Updates <span class="badge">9</span></p>
+
 <div class="input-group">
   <div class="search-bar">
     <input [formControl]="searchControl" type="search" name="search" pattern=".*\S.*" required>
@@ -8,3 +12,12 @@
     </button>
   </div>
 </div>
+
+
+
+<li [formControl]="category">
+  <a class="dropdown-item" (click)="onChangeCategory('Livre')">Livre</a>
+  <a class="dropdown-item" (click)="onChangeCategory('Manga')">Manga</a>
+  <a class="dropdown-item" (click)="onChangeCategory('Jeu')">Jeu</a>
+</li>
+

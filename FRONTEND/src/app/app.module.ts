@@ -8,10 +8,8 @@ import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DirClientDirective } from './dir-client.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CatalogueComponent } from './catalog/catalogue/catalogue.component';
-import { RechercheProduitsComponent } from './catalog/recherche-produits/recherche-produits.component';
+
 import { PanierComponent } from './panier/panier.component';
-import { ProduitDetailComponent } from './catalog/produit-detail/produit-detail.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 
