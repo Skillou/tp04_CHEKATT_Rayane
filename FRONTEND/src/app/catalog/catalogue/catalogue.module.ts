@@ -8,7 +8,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 const routes: Routes = [
-  { path: '', component: CatalogueComponent },
+  { path: '', component: CatalogueComponent, pathMatch: 'full' },
   { path: 'product/:id', component: ProduitDetailComponent }
 ];
 

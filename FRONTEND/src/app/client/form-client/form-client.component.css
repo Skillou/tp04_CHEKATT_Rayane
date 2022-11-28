@@ -71,10 +71,16 @@ label.radio input:checked + span {
 
 .ng-valid:not(form) {
   border-right: 5px solid #42A948; /* green */
+  /*border-bottom: 1px solid #42A948 !important;*/
   box-shadow: 0 0 0 0.1rem rgba(186, 255, 185, 0.25) !important;
 }
 
 .ng-invalid:not(form)  {
-  border-right: 2px solid #a94442; /* red */
+  border-right: 2px solid #e74c3c; /* red */
+  /*border-bottom: 1px solid #e74c3c !important;*/
   box-shadow: 0 0 0 0.1rem rgba(255,10,29,0.25) !important;
+  /*background-color: ivory;*/
+  /*outline: 2px solid red;*/
+  /*border-radius: 5px;*/
 }
+
