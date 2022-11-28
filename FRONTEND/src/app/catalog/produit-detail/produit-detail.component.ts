@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {Store} from "@ngxs/store";
-import {CatalalogueService} from "../../Utils/Services/catalalogue.service";
-import {Observable} from "rxjs";
-import {Produit} from "../../model/Produit";
+import { ActivatedRoute } from "@angular/router";
+import { Store } from "@ngxs/store";
+import { CatalalogueService } from "../../Utils/Services/catalalogue.service";
+import { Observable } from "rxjs";
+import { Produit } from "../../model/Produit";
 
 @Component({
   selector: 'app-produit-detail',
@@ -12,7 +12,7 @@ import {Produit} from "../../model/Produit";
 })
 export class ProduitDetailComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private catalogueService: CatalalogueService, private store: Store) { }
+  constructor(private route: ActivatedRoute, private catalogueService: CatalalogueService) { }
 
   ngOnInit(): void {
   }
