@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from "@angular/router";
-import { FormsModule } from "@angular/forms";
 import {CatalogueComponent} from "./catalogue.component";
 import {RechercheProduitsComponent} from "../recherche-produits/recherche-produits.component";
 import {ProduitDetailComponent} from "../produit-detail/produit-detail.component";
+import {RouterModule, Routes} from "@angular/router";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 const routes: Routes = [
@@ -22,6 +22,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class CatalogueModule { }

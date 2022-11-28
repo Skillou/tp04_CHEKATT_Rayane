@@ -1,14 +1,15 @@
-.center {
-  display: flex;
-  justify-content: center;
+img {
+  max-width: 30em;
+  max-height: 30em;
 }
 
 .card {
-  width: 25rem;
+  float: none;
+  margin: 0 auto 10px;
 }
 
-.title{
-  text-align: center;
-  font-size: 1.5em;
-  font-weight: bold;
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

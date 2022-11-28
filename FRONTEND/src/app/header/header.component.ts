@@ -1,16 +1,15 @@
-import { Component } from '@angular/core';
-import {Observable} from "rxjs";
-import {PanierState} from "../states/panier-state";
-import { Select } from "@ngxs/store";
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-
-export class HeaderComponent {
-  @Select(PanierState.getProductCount) productCount$!: Observable<number>;
+export class HeaderComponent implements OnInit {
 
   constructor() { }
+
+  ngOnInit(): void {
+  }
+
 }

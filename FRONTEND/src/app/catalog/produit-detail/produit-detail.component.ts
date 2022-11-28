@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {Store} from "@ngxs/store";
+import {CatalalogueService} from "../../Utils/Services/catalalogue.service";
+import {Observable} from "rxjs";
+import {Produit} from "../../model/Produit";
 
 @Component({
   selector: 'app-produit-detail',
@@ -7,9 +12,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProduitDetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private catalogueService: CatalalogueService, private store: Store) { }
 
   ngOnInit(): void {
   }
-
 }

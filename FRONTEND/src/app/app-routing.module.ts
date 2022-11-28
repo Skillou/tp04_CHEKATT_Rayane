@@ -2,18 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from "./home/home.component";
 import {CatalogueComponent} from "./catalog/catalogue/catalogue.component";
-import {FormClientComponent} from "./client/form-client/form-client.component";
 
 const routes: Routes = [
-  { path: '', component:  HomeComponent},
-  { path: 'home', component:  HomeComponent},
-  { path: 'client-form', component:  FormClientComponent},
-  { path: 'catalog', component: CatalogueComponent },
-  { path: 'panier', loadChildren: () => import('./panier/panier.module').then(m => m.PanierModule) },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'catalogue', component: CatalogueComponent },
+  { path: 'client', loadChildren: () => import('./client/form-client/client.module').then(m => m.ClientModule) },
+  { path: 'catalogue', loadChildren: () => import('./catalog/catalogue/catalogue.module').then(m => m.CatalogueModule) },
 ];
 
 @NgModule({
-  declarations: [],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

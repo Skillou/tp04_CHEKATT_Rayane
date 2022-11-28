@@ -1,4 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {FormControl, Validators} from "@angular/forms";
+import {RechercheProduitsService} from "../../Utils/Services/recherche-produits.service";
 
 @Component({
   selector: 'app-recherche-produits',
@@ -7,17 +9,15 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class RechercheProduitsComponent implements OnInit {
 
-  searchText: string = "";
+  public readonly searchControl: FormControl;
 
-  @Output() newSearchEvent = new EventEmitter<string>();
+  constructor(private readonly service: RechercheProduitsService) {
+    this.searchControl = new FormControl('', Validators.required);
+  }
 
-  constructor() { }
+  public search(): void {
+    this.service.searchProducts(this.searchControl.value);
+  }
 
   ngOnInit(): void { }
-
-  searchChange() {
-    this.searchText;
-    console.log(this.searchText);
-    this.newSearchEvent.emit(this.searchText);
-  }
 }

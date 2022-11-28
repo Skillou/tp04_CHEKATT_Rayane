@@ -1,6 +1,8 @@
-import { Client } from '../../model/Client';
-import { Component, OnInit, Output } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {Client} from '../../model/Client';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {ClientService} from "../../Utils/Services/client.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-form-client',
@@ -11,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class FormClientComponent implements OnInit {
 
   validate: boolean = false;
-  civilities: string[] = ['Homme', 'Femme', 'Autres'];
+  civilities: string[] = ['M.', 'Mme.', 'Autres'];
 
   // client: Client = new Client();
 
@@ -37,53 +39,94 @@ export class FormClientComponent implements OnInit {
     street: ['', Validators.required],
     city: ['', Validators.required],
     zipCode: ['', [Validators.required, Validators.pattern(/(?:0[1-9]|[13-8][0-9]|2[ab1-9]|9[0-5])(?:[0-9]{3})?|9[78][1-9](?:[0-9]{2})?/)]],
-    login: ['', [Validators.required, Validators.min(5)]],
+    login: ['', [Validators.required, Validators.pattern('\\S{5}\\S*')]],
     password: ['', Validators.required],
     confirmPassword: ['', Validators.required],
   });
-  constructor(private fb: FormBuilder) { }
 
-  get civility() { return this.clientForm.get('civility'); }
+  constructor(private fb: FormBuilder, private clientService: ClientService, private router: Router,) {
+  }
 
-  get firstName() { return this.clientForm.get('firstName'); }
+  get civility() {
+    return this.clientForm.get('civility');
+  }
 
-  get lastName() { return this.clientForm.get('lastName'); }
+  get firstName() {
+    return this.clientForm.get('firstName');
+  }
 
-  get email() { return this.clientForm.get('email'); }
+  get lastName() {
+    return this.clientForm.get('lastName');
+  }
 
-  get telphone() { return this.clientForm.get('telphone'); }
+  get email() {
+    return this.clientForm.get('email');
+  }
 
-  get street() { return this.clientForm.get('street'); }
+  get telphone() {
+    return this.clientForm.get('telphone');
+  }
 
-  get city() { return this.clientForm.get('city'); }
+  get street() {
+    return this.clientForm.get('street');
+  }
 
-  get zipCode() { return this.clientForm.get('zipCode'); }
+  get city() {
+    return this.clientForm.get('city');
+  }
 
-  get login() { return this.clientForm.get('login'); }
+  get zipCode() {
+    return this.clientForm.get('zipCode');
+  }
 
-  get password() { return this.clientForm.get('password'); }
+  get login() {
+    return this.clientForm.get('login');
+  }
 
-  get confirmPassword() { return this.clientForm.get('confirmPassword'); }
+  get password() {
+    return this.clientForm.get('password');
+  }
+
+  get confirmPassword() {
+    return this.clientForm.get('confirmPassword');
+  }
 
   ngOnInit(): void {
+    this.clientForm.valueChanges.subscribe(form => {
+      this.client.civility = form.civility ?? '';
+      this.client.firstName = form.firstName ?? '';
+      this.client.lastName = form.lastName ?? '';
+      this.client.email = form.email ?? '';
+      this.client.telphone = form.telphone ?? '';
+      this.client.street = form.street ?? '';
+      this.client.city = form.city ?? '';
+      this.client.zipCode = form.zipCode ?? '';
+      this.client.login = form.login ?? '';
+      this.client.password = form.password ?? '';
+    })
   }
 
   onSubmit(): void {
     this.validate = true;
     if (this.clientForm.valid) {
       console.log(this.clientForm.value);
-      this.client.civility = this.clientForm.get('civility')?.value;
-      this.client.firstName = this.clientForm.get('firstName')?.value;
-      this.client.lastName = this.clientForm.get('lastName')?.value;
-      this.client.email = this.clientForm.get('email')?.value;
-      this.client.telphone = this.clientForm.get('telphone')?.value;
-      this.client.street = this.clientForm.get('street')?.value;
-      this.client.city = this.clientForm.get('city')?.value;
-      this.client.zipCode = this.clientForm.get('zipCode')?.value;
-      this.client.login = this.clientForm.get('login')?.value;
-      this.client.password = this.clientForm.get('password')?.value;
-    }
-    else {
+
+      // this.clientForm.valueChanges.subscribe(form => {
+      //     this.client.civility = this.clientForm.get('civility')?.value;
+      //     this.client.firstName = this.clientForm.get('firstName')?.value;
+      //     this.client.lastName = this.clientForm.get('lastName')?.value;
+      //     this.client.email = this.clientForm.get('email')?.value;
+      //     this.client.telphone = this.clientForm.get('telphone')?.value;
+      //     this.client.street = this.clientForm.get('street')?.value;
+      //     this.client.city = this.clientForm.get('city')?.value;
+      //     this.client.zipCode = this.clientForm.get('zipCode')?.value;
+      //     this.client.login = this.clientForm.get('login')?.value;
+      //     this.client.password = this.clientForm.get('password')?.value;
+      //   })
+
+      this.clientService.client = this.client;
+      this.router.navigate(['/client/result']);
+    } else {
       console.log(this.clientForm)
     }
   }
