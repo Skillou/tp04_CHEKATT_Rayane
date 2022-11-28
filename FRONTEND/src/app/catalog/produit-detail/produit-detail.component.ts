@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { Store } from "@ngxs/store";
 import { CatalalogueService } from "../../Utils/Services/catalalogue.service";
-import { Observable } from "rxjs";
-import { Produit } from "../../model/Produit";
+import {Produit} from "../../model/Produit";
 
 @Component({
   selector: 'app-produit-detail',
@@ -12,8 +10,13 @@ import { Produit } from "../../model/Produit";
 })
 export class ProduitDetailComponent implements OnInit {
 
+  produit: Produit | undefined;
+
   constructor(private route: ActivatedRoute, private catalogueService: CatalalogueService) { }
 
   ngOnInit(): void {
+    this.catalogueService.getCatalogue().subscribe(
+      produits => this.produit = produits.find(p => p.id == this.route.snapshot.params['id'])
+    );
   }
 }
