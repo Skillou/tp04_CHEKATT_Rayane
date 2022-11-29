@@ -9,30 +9,37 @@ import {Produit} from "../../model/Produit";
 export class RechercheProduitsService {
   public readonly produits$: Observable<Produit[]>;
 
-  private readonly _termSubject$: BehaviorSubject<string>;
+  private readonly _searchSubject$: BehaviorSubject<string>;
+  private readonly _categorySubject$: BehaviorSubject<string>;
 
   constructor(private readonly catalalogueService: CatalalogueService) {
-    this._termSubject$ = new BehaviorSubject<string>('');
+    this._searchSubject$ = new BehaviorSubject<string>('');
+    this._categorySubject$ = new BehaviorSubject<string>('');
     // alert("Constructor Recherche produit");
 
     this.produits$ = combineLatest([
       this.catalalogueService.getCatalogue(),
-      this._termSubject$,
+      this._searchSubject$,
+      this._categorySubject$
     ]).pipe(
-      map(([ produits, search ]: [ Produit[], string ]): Produit[] => produits.filter(
+      map(([ produits, search, category ]: [ Produit[], string, string ]): Produit[] => produits.filter(
         (produit: Produit): boolean => produit.name.toLowerCase().includes(search.toLowerCase()),
+        // (produit: Produit): boolean => this.produit.category ? produit.category === this.produit.category : true),
+        // this.category ? produits.category === this.category : true
       )),
       // map((produits: Produit[]): Produit[] => produits.filter(
-      //   (produit: Produit): boolean => this.category ? produit.category === this.category : true,
+      //   (produit: Produit): boolean => produit.category ? produit.category === produit.category : true,
       // )),
     );
   }
 
-  public searchProducts(term: string): void {
-    this._termSubject$.next(term);
+
+  public searchProducts(search: string): void {
+    this._searchSubject$.next(search);
   }
 
-  public categoryProducts(term: string): void {
-    this._termSubject$.next(term);
+  public categoryProducts(category: string): void {
+    alert("CategoryProductsSubject");
+    this._categorySubject$.next(category);
   }
 }
