@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BehaviorSubject, combineLatest, map, Observable} from "rxjs";
 import {CatalalogueService} from "./catalalogue.service";
 import {Produit} from "../../model/Produit";
@@ -22,7 +22,7 @@ export class RechercheProduitsService {
       this._searchSubject$,
       this._categorySubject$
     ]).pipe(
-      map(([ produits, search, category ]: [ Produit[], string, string ]): Produit[] => produits.filter(
+      map(([produits, search, category]: [Produit[], string, string]): Produit[] => produits.filter(
         (produit: Produit): boolean => produit.name.toLowerCase().includes(search.toLowerCase()),
         // (produit: Produit): boolean => this.produit.category ? produit.category === this.produit.category : true),
         // this.category ? produits.category === this.category : true
@@ -32,8 +32,7 @@ export class RechercheProduitsService {
       // )),
     );
   }
-
-
+  
   public searchProducts(search: string): void {
     this._searchSubject$.next(search);
   }
