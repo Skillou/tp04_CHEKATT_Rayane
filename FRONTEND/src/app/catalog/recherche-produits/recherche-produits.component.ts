@@ -10,11 +10,11 @@ import {RechercheProduitsService} from "../../Utils/Services/recherche-produits.
 export class RechercheProduitsComponent implements OnInit {
 
   public readonly searchControl: FormControl;
-  public readonly category: FormControl;
+  public readonly category: string;
 
   constructor(private readonly service: RechercheProduitsService) {
     this.searchControl = new FormControl('', Validators.required);
-    this.category = new FormControl('', Validators.required);
+    this.category = '';
   }
 
   public search(): void {
@@ -22,8 +22,8 @@ export class RechercheProduitsComponent implements OnInit {
   }
 
   public onChangeCategory(category: string) {
-    this.service.categoryChange(this.category.value);
-    alert(category);
+    this.service.categoryProducts(this.category);
+    alert("Test" + category);
   }
 
   ngOnInit(): void { }

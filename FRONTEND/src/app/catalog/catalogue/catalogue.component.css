@@ -1,3 +1,8 @@
+h1{
+  background: red;
+  color: red;
+}
+
 img {
   max-width: 20em;
   max-height: 100em;
@@ -12,16 +17,4 @@ img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-}
-
-.badge span {
-  background-color: #ddd6ff;
-  width: 60px;
-  height: 25px;
-  padding-bottom: 3px;
-  border-radius: 10px;
-  display: flex;
-  color: #795eff;
-  justify-content: center;
-  align-items: center
 }

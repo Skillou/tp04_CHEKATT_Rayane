@@ -1,9 +1,6 @@
 <p>Recherche produits : </p>
 
-<div class="badge"><span>azeazeza</span></div>
-
-<p>Updates <span class="badge">9</span></p>
-
+<!--  Recherche -->
 <div class="input-group">
   <div class="search-bar">
     <input [formControl]="searchControl" type="search" name="search" pattern=".*\S.*" required>
@@ -13,11 +10,21 @@
   </div>
 </div>
 
-
-
-<li [formControl]="category">
-  <a class="dropdown-item" (click)="onChangeCategory('Livre')">Livre</a>
-  <a class="dropdown-item" (click)="onChangeCategory('Manga')">Manga</a>
-  <a class="dropdown-item" (click)="onChangeCategory('Jeu')">Jeu</a>
-</li>
-
+<div class="container">
+  <!--  Badge -->
+  <div class="badge livre">
+    <span>
+      <a class="dropdown-item" (click)="onChangeCategory('Livre')">Livre</a>
+    </span>
+  </div>
+  <div class="badge manga">
+    <span>
+      <a class="dropdown-item" (click)="onChangeCategory('Manga')">Manga</a>
+    </span>
+  </div>
+  <div class="badge jeu">
+    <span>
+      <a class="dropdown-item" (click)="onChangeCategory('Jeu')">Jeu</a>
+    </span>
+  </div>
+</div>

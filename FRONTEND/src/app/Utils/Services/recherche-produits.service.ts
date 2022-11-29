@@ -13,6 +13,7 @@ export class RechercheProduitsService {
 
   constructor(private readonly catalalogueService: CatalalogueService) {
     this._termSubject$ = new BehaviorSubject<string>('');
+    // alert("Constructor Recherche produit");
 
     this.produits$ = combineLatest([
       this.catalalogueService.getCatalogue(),
@@ -21,6 +22,9 @@ export class RechercheProduitsService {
       map(([ produits, search ]: [ Produit[], string ]): Produit[] => produits.filter(
         (produit: Produit): boolean => produit.name.toLowerCase().includes(search.toLowerCase()),
       )),
+      // map((produits: Produit[]): Produit[] => produits.filter(
+      //   (produit: Produit): boolean => this.category ? produit.category === this.category : true,
+      // )),
     );
   }
 
@@ -28,7 +32,7 @@ export class RechercheProduitsService {
     this._termSubject$.next(term);
   }
 
-  public categoryChange(term: string): void {
+  public categoryProducts(term: string): void {
     this._termSubject$.next(term);
   }
 }

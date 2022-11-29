@@ -161,6 +161,35 @@ body {
   width: 250px;
 }
 
-.btn-category{
-  margin-left: 2em;
+.container {
+  height: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*border: solid;*/
+}
+
+.badge span {
+  width: 60px;
+  height: 25px;
+  padding-bottom: 3px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.badge.livre span{
+  background-color: #ddd6ff;
+  color: #795eff;
+}
+
+.badge.manga span{
+  background-color: #d6fff4;
+  color: #2a7362;
+}
+
+.badge.jeu span{
+  background-color: #d6ffe0;
+  color: #548a34;
 }
