@@ -179,6 +179,11 @@ body {
   align-items: center;
 }
 
+.badge span a:hover {
+  color: #c96fb0;
+  font-weight: bold;
+}
+
 .badge.livre span{
   background-color: #ddd6ff;
   color: #795eff;
