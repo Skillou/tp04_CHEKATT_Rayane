@@ -1,26 +1,15 @@
-import { AfterViewInit, Component, ElementRef, inject, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { RechercheProduitsService } from "../../Utils/Services/recherche-produits.service";
 
 type Category = 'Livre' | 'Manga' | 'Jeu';
 
-@UntilDestroy()
 @Component({
   selector: 'app-recherche-produits',
   templateUrl: './recherche-produits.component.html',
   styleUrls: ['./recherche-produits.component.css']
 })
-export class RechercheProduitsComponent implements AfterViewInit {
-
-  @ViewChild('livre')
-  private readonly livreBadge!: ElementRef<HTMLDivElement>;
-    
-  @ViewChild('manga')
-  private readonly mangaBadge!: ElementRef<HTMLDivElement>;  
-    
-  @ViewChild('jeu')
-  private readonly jeuBadge!: ElementRef<HTMLDivElement>;
+export class RechercheProduitsComponent {
 
   protected readonly searchGroup = inject(FormBuilder).nonNullable.group({
     search: ['', Validators.required],
@@ -31,16 +20,8 @@ export class RechercheProduitsComponent implements AfterViewInit {
     })
   })
 
-  constructor(private readonly fb: FormBuilder, private readonly service: RechercheProduitsService) {}
-
-  ngAfterViewInit(): void {
-    this.searchGroup.get('category')!.valueChanges.pipe(untilDestroyed(this)).subscribe(({ livre, manga, jeu }) => {
-      [
-        { badge: this.livreBadge.nativeElement, checked: livre },
-        { badge: this.mangaBadge.nativeElement, checked: manga },
-        { badge: this.jeuBadge.nativeElement, checked: jeu },
-      ].forEach(({ badge, checked }) => badge.classList[checked ? 'add' : 'remove']('badge--checked'));
-    });
+  constructor(private readonly fb: FormBuilder, private readonly service: RechercheProduitsService) {
+    
   }
 
   public search(): void {

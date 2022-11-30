@@ -196,19 +196,21 @@ body {
   font-weight: bold;
 }
 
-.badge--checked::before {
+.badge:has(input:checked)::before {
   content: '';
   position: absolute;
   inset: -4px;
-  border: 2px solid transparent;
+  border: 2px solid;
   border-radius: 34px;
+  pointer-events: none;
 }
 
 .badge--livre {
   background-color: #ddd6ff;
   color: #795eff;
 }
-.badge--livre.badge--checked::before {
+
+.badge--livre:has(input:checked)::before {
   border-color: #795eff;
 }
 
@@ -216,7 +218,7 @@ body {
   background-color: #d6fff4;
   color: #2a7362;
 }
-.badge--manga.badge--checked::before {
+.badge--manga:has(input:checked)::before {
   border-color: #2a7362;
 }
 
@@ -224,6 +226,6 @@ body {
   background-color: #d6ffe0;
   color: #548a34;
 }
-.badge--jeu.badge--checked::before {
+.badge--jeu:has(input:checked)::before {
   border-color: #548a34;
 }

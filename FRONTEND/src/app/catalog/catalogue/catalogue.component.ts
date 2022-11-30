@@ -11,6 +11,8 @@ import {RechercheProduitsService} from "../../Utils/Services/recherche-produits.
 })
 export class CatalogueComponent {
 
+
+
   public readonly produits$: Observable<Produit[]>;
 
   constructor(private readonly service: RechercheProduitsService) {

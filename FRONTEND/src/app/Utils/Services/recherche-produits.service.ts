@@ -22,7 +22,7 @@ export class RechercheProduitsService {
     ))
   );
 
-  constructor(private readonly catalalogueService: CatalalogueService) {}
+  constructor(private readonly catalalogueService: CatalalogueService) { }
 
   public searchProducts(search: string): void {
     this._searchSubject$.next(search);
