@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, combineLatest, map, Observable} from "rxjs";
+import {BehaviorSubject, combineLatest, map} from "rxjs";
 import {CatalalogueService} from "./catalalogue.service";
 import {Produit} from "../../model/Produit";
+import {Category} from "../../catalog/recherche-produits/recherche-produits.component";
 
 @Injectable({
   providedIn: 'root'
@@ -22,14 +23,20 @@ export class RechercheProduitsService {
     ))
   );
 
-  constructor(private readonly catalalogueService: CatalalogueService) { }
+  constructor(private readonly catalalogueService: CatalalogueService) {
+  }
 
   public searchProducts(search: string): void {
     this._searchSubject$.next(search);
   }
 
-  public categoryProducts(category: string): void {
-    alert("CategoryProductsSubject");
-    this._categorySubject$.next(category);
+  public categoryProducts(category: Category): void {
+    if (category.livre) {
+      this._categorySubject$.next("Livre");
+    } else if (category.manga) {
+      this._categorySubject$.next("Manga");
+    } else if (category.jeu) {
+      this._categorySubject$.next("Jeu");
+    }
   }
 }
