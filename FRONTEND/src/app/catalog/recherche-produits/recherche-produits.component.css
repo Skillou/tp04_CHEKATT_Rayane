@@ -161,15 +161,17 @@ body {
   width: 250px;
 }
 
-.container {
+.badge__container {
   height: 3em;
   display: flex;
   align-items: center;
   justify-content: center;
+  column-gap: 1rem;
   /*border: solid;*/
 }
 
-.badge span {
+.badge {
+  position: relative;
   width: 60px;
   height: 25px;
   padding-bottom: 3px;
@@ -177,24 +179,51 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: normal;
+  transition: font-weight 200ms ease-in-out;
 }
 
-.badge span a:hover {
-  color: #c96fb0;
+.badge,
+.badge * {
+  cursor: pointer;
+}
+
+.badge input {
+  display: none;
+}
+
+.badge:hover {
   font-weight: bold;
 }
 
-.badge.livre span{
+.badge--checked::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 2px solid transparent;
+  border-radius: 34px;
+}
+
+.badge--livre {
   background-color: #ddd6ff;
   color: #795eff;
 }
+.badge--livre.badge--checked::before {
+  border-color: #795eff;
+}
 
-.badge.manga span{
+.badge--manga {
   background-color: #d6fff4;
   color: #2a7362;
 }
+.badge--manga.badge--checked::before {
+  border-color: #2a7362;
+}
 
-.badge.jeu span{
+.badge--jeu {
   background-color: #d6ffe0;
   color: #548a34;
+}
+.badge--jeu.badge--checked::before {
+  border-color: #548a34;
 }

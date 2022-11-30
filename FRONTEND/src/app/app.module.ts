@@ -20,7 +20,7 @@ import { HomeComponent } from './home/home.component';
     FooterComponent,
     DirClientDirective,
     PanierComponent,
-    HomeComponent,
+    HomeComponent
   ],
   imports: [
     HttpClientModule,

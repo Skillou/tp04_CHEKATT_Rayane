@@ -6,7 +6,6 @@ import {ProduitDetailComponent} from "../produit-detail/produit-detail.component
 import {RouterModule, Routes} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
-
 const routes: Routes = [
   { path: '', component: CatalogueComponent, pathMatch: 'full' },
   { path: 'product/:id', component: ProduitDetailComponent }
@@ -22,7 +21,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CatalogueModule { }
