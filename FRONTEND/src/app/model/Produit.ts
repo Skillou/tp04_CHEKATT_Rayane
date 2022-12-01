@@ -1,9 +1,13 @@
+export type CategoryName = 'livre' | 'manga' | 'jeu';
+
+export type Category = Record<CategoryName, boolean>;
+
 export class Produit {
   public id: number;
   public name: string;
   public description: string;
   public price: number;
-  public category: string;
+  public category: CategoryName;
   public image: string;
   public summary: string;
 

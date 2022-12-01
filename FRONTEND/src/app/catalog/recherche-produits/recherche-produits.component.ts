@@ -1,15 +1,8 @@
-import { Component, ElementRef, inject, ViewChild } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 import { RechercheProduitsService } from "../../Utils/Services/recherche-produits.service";
-import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
-
-export interface Category {
-  livre: boolean;
-  manga: boolean;
-  jeu: boolean;
-}
-
-// export type Category = 'Livre' | 'Manga' | 'Jeu';
+import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
+import { Category } from '../../model/Produit';
 
 @UntilDestroy()
 
@@ -23,7 +16,7 @@ export class RechercheProduitsComponent {
 
   protected readonly searchGroup = inject(FormBuilder).nonNullable.group({
     search: ['', Validators.required],
-    category: this.fb.nonNullable.group({
+    category: this.fb.nonNullable.group<Category>({
       livre: false,
       manga: false,
       jeu: false
