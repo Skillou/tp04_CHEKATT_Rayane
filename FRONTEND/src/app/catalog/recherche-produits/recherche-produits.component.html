@@ -11,19 +11,9 @@
 
   <form formGroupName="category" class="badge__container">
     <!--  Badge -->
-    <div class="badge badge--livre">
-      <label for="livre">Livre</label>
-      <input id="livre" type="checkbox" formControlName="livre">
-    </div>
-
-    <div class="badge badge--manga">
-      <label for="manga">Manga</label>
-      <input id="manga" type="checkbox" formControlName="manga">
-    </div>
-
-    <div class="badge badge--jeu">
-      <label for="jeu">Jeu</label>
-      <input id="jeu" type="checkbox" formControlName="jeu">
+    <div [class]="'badge badge--' + category" *ngFor="let category of categories">
+      <label [for]="category">{{ category | titlecase }}</label>
+      <input [id]="category" type="checkbox" [formControlName]="category">
     </div>
   </form>
 </form>

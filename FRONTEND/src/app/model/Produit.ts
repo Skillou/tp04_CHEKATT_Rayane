@@ -1,4 +1,6 @@
-export type CategoryName = 'livre' | 'manga' | 'jeu';
+export const categories = ['livre', 'manga', 'jeu'] as const;
+
+export type CategoryName = typeof categories[number];
 
 export type Category = Record<CategoryName, boolean>;
 

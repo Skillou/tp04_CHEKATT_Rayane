@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 import { RechercheProduitsService } from "../../Utils/Services/recherche-produits.service";
 import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
-import { Category } from '../../model/Produit';
+import { Category, categories } from '../../model/Produit';
 
 @UntilDestroy()
 
@@ -13,6 +13,8 @@ import { Category } from '../../model/Produit';
 })
 
 export class RechercheProduitsComponent {
+
+  protected categories = categories;
 
   protected readonly searchGroup = inject(FormBuilder).nonNullable.group({
     search: ['', Validators.required],
