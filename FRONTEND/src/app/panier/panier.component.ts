@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Produit } from '../model/Produit';
+import { Store } from '@ngxs/store';
+import { Observable } from "rxjs";
+import {EmptyCart, RemoveProduct} from "../Utils/Actions/panier.actions";
 
 @Component({
   selector: 'app-panier',
@@ -8,11 +11,26 @@ import { Produit } from '../model/Produit';
 })
 export class PanierComponent implements OnInit {
 
-  public produits : Produit[] | undefined;
+  produits$: Observable<Produit[]>;
 
-  constructor() { }
+  constructor(private readonly store: Store) {
+    this.produits$ = this.store.select(state => state.cart.produit);
+    console.log(this.produits$);
+   }
 
   ngOnInit(): void {
+  }
+
+  public removeProduct(productId: number) {
+    this.store.dispatch(new RemoveProduct(productId));
+  }
+
+  // public removeAllProduct(produit: Produit) {
+  //   this.store.dispatch(new RemoveAllProduct(produit));
+  // }
+
+  emptyCart() {
+    this.store.dispatch(new EmptyCart());
   }
 
 }

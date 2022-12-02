@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {Observable} from 'rxjs';
 import {Produit} from '../../model/Produit';
 import {RechercheProduitsService} from "../../Utils/Services/recherche-produits.service";
 import {AddProduct} from "../../Utils/Actions/panier.actions";
@@ -13,13 +12,7 @@ import {Store} from "@ngxs/store";
 })
 export class CatalogueComponent {
 
-
-
-  public readonly produits$: Observable<Produit[]>;
-
-  constructor(private readonly service: RechercheProduitsService, private store: Store) {
-    this.produits$ = this.service.produits$;
-  }
+  constructor(protected readonly service: RechercheProduitsService, private store: Store) {}
 
   public getProductId(_: number, item: Produit): number {
     return item.id;
@@ -27,7 +20,5 @@ export class CatalogueComponent {
 
   public addProduct(produit: Produit) {
     this.store.dispatch(new AddProduct(produit));
-    // console.log(produit);
-    // console.log(this.store.dispatch(new AddProduct(produit)));
   }
 }

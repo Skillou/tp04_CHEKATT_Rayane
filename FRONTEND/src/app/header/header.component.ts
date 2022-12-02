@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from "rxjs";
+import { Store } from '@ngxs/store';
+import { CartState } from '../Utils/States/panier.states';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  protected readonly produitsCount$ = this.store.select(CartState.countProduct);
 
-  ngOnInit(): void {
-  }
+  constructor(private readonly store: Store) { }
 
+  ngOnInit(): void { }
 }

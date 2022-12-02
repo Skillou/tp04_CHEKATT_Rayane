@@ -25,9 +25,9 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/catalogue']">Catalogue</a>
         </li>
-        <!--        <li class="nav-item">-->
-        <!--          <a class="nav-link" [routerLink]="['/cart']">Panier ({{productCount$ | async}})</a>-->
-        <!--        </li>-->
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/cart']">Panier {{ produitsCount$ | async}}</a>
+        </li>
       </ul>
     </div>
   </div>
