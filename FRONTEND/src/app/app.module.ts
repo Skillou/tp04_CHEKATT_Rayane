@@ -8,10 +8,11 @@ import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DirClientDirective } from './dir-client.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { PanierComponent } from './panier/panier.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
+import {NgxsModule} from "@ngxs/store";
+import {CartState} from "./Utils/States/panier.states";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,9 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     HttpClientModule,
+    NgxsModule.forRoot([
+      CartState
+    ]),
     BrowserModule,
     NgbModule,
     FormsModule,

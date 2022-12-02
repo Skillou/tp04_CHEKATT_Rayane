@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, combineLatest, map} from "rxjs";
+import {BehaviorSubject, combineLatest, debounceTime, map} from "rxjs";
 import {CatalalogueService} from "./catalalogue.service";
 import {Produit} from "../../model/Produit";
 import { Category, CategoryName } from "../../model/Produit";
@@ -18,7 +18,8 @@ export class RechercheProduitsService {
   ]).pipe(
     map(([produits, search, categories]: [Produit[], string, CategoryName[]]): Produit[] => produits.filter(
       (produit: Produit): boolean =>
-        produit.name.toLowerCase().includes(search.toLowerCase()) && !categories.length || categories.includes(produit.category)
+        produit.name.toLowerCase().includes(search.toLowerCase()) && !categories.length || categories.includes(produit.category),
+        // debounceTime(300),
     ))
   );
 
