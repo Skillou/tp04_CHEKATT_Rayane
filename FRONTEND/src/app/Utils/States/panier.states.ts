@@ -32,6 +32,14 @@ export class CartState {
     @Action(RemoveProduct)
     removeProduct(ctx: StateContext<CartStateModel>, action: RemoveProduct): void {
       const state = ctx.getState();
+
+      // ctx.setState({
+      //   produits: state.produits.find(({ produit: { id } }) => id !== action.produit.id)
+      // })
+
+
+
+
       // ctx.setState({
       //   produits: state.produits.find(({ produit: { id } }) => id !== action.produit.id)
       //   ? state.produits.map(({ produit, quantity }) => ({ produit, quantity: quantity - (produit.id === action.produit.id ? 1 : 0) }))

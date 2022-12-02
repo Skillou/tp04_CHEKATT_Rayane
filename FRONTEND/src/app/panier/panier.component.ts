@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Produit } from '../model/Produit';
 import { Store } from '@ngxs/store';
-import { Observable } from "rxjs";
-import {EmptyCart, RemoveProduct} from "../Utils/Actions/panier.actions";
+import { EmptyCart, RemoveProduct } from "../Utils/Actions/panier.actions";
+import { CartProduit, CartStateModel } from '../Utils/States/panier.states.model';
 
 @Component({
   selector: 'app-panier',
@@ -11,16 +10,14 @@ import {EmptyCart, RemoveProduct} from "../Utils/Actions/panier.actions";
 })
 export class PanierComponent implements OnInit {
 
-  produits$: Observable<Produit[]> = this.store.select(state => state.cart.produit);
-
-  constructor(private readonly store: Store) {
-    this.produits$.subscribe(console.log)
-   }
+  protected readonly produits$ = this.store.select((state: { cart: CartStateModel }) => state.cart.produits); 
+  
+  constructor(private readonly store: Store) { }
 
   ngOnInit(): void {
   }
 
-  public removeProduct(productId: number) {
+  public removeProduct(productId: Number) {
     this.store.dispatch(new RemoveProduct(productId));
   }
 
