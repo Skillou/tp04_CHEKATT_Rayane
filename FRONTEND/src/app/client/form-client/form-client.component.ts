@@ -109,23 +109,12 @@ export class FormClientComponent implements OnInit {
   onSubmit(): void {
     this.validate = true;
     if (this.clientForm.valid) {
-      // this.clientForm.valueChanges.subscribe(form => {
-      //     this.client.civility = this.clientForm.get('civility')?.value;
-      //     this.client.firstName = this.clientForm.get('firstName')?.value;
-      //     this.client.lastName = this.clientForm.get('lastName')?.value;
-      //     this.client.email = this.clientForm.get('email')?.value;
-      //     this.client.telphone = this.clientForm.get('telphone')?.value;
-      //     this.client.street = this.clientForm.get('street')?.value;
-      //     this.client.city = this.clientForm.get('city')?.value;
-      //     this.client.zipCode = this.clientForm.get('zipCode')?.value;
-      //     this.client.login = this.clientForm.get('login')?.value;
-      //     this.client.password = this.clientForm.get('password')?.value;
-      //   })
-
+      
       this.clientService.client = this.client;
       this.router.navigate(['/client/result']);
-    } else {
-      console.log(this.clientForm);
+    } 
+    else {
+      console.log("Error : ", this.clientForm);
     }
   }
 }
