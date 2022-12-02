@@ -11,11 +11,10 @@ import {EmptyCart, RemoveProduct} from "../Utils/Actions/panier.actions";
 })
 export class PanierComponent implements OnInit {
 
-  produits$: Observable<Produit[]>;
+  produits$: Observable<Produit[]> = this.store.select(state => state.cart.produit);
 
   constructor(private readonly store: Store) {
-    this.produits$ = this.store.select(state => state.cart.produit);
-    console.log(this.produits$);
+    this.produits$.subscribe(console.log)
    }
 
   ngOnInit(): void {
