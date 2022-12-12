@@ -1,11 +1,23 @@
 <?php
+// php -S localhost:8080 -t api api/index.php
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Methods: HEAD, GET, POST, PUT, PATCH, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method,Access-Control-Request-Headers, Authorization");
+header('Content-Type: application/json');
+$method = $_SERVER['REQUEST_METHOD'];
+if ($method == "OPTIONS") {
+    header('Access-Control-Allow-Origin: *');
+    header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method,Access-Control-Request-Headers, Authorization");
+    header("HTTP/1.1 200 OK");
+    die();
+}
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use Tuupola\Middleware\HttpBasicAuthentication;
 use \Firebase\JWT\JWT;
 require __DIR__ . '/../vendor/autoload.php';
- 
+
 const JWT_SECRET = "Skillou67JwtSecret";
 // const JWT_SECRET = "makey1234567";
 
@@ -15,9 +27,9 @@ function createJwT (Response $response) : Response {
     $issuedAt = time();
     $expirationTime = $issuedAt + 60;
     $payload = array(
-    'userid' => 'toto',
-    'email' => 'titi@gmail.com',
-    'pseudo' => 'titiPseudo',
+    'userid' => '667',
+    'email' => 'rayane@gmail.com',
+    'pseudo' => 'Skillou',
     'iat' => $issuedAt,
     'exp' => $expirationTime
     );
@@ -29,7 +41,7 @@ function createJwT (Response $response) : Response {
 
 // GET
 
-$app->get('/api/hello/{name}', function (Request $request, Response $response, $args) {
+$app->get('{name}', function (Request $request, Response $response, $args) {
     $array = [];
     $array ["nom"] = $args ['name'];
     $response->getBody()->write(json_encode ($array));
@@ -71,33 +83,58 @@ $app->post('/api/login', function (Request $request, Response $response, $args) 
 
 // DEL
 
-// $app->delete('/api/user/{id}', function (Request $request, Response $response, $args) {
-//
-//     // Logique delete
-//
-//         // Supprimer un produit
-//         // $id = intval($_GET["id"]);
-//         // deleteProduct($id);
-//         // break;
-//
+$app->delete('/api/user/{id}', function (Request $request, Response $response, $args) {
+
+    // Logique delete
+
+        // Supprimer un produit
+        // $id = intval($_GET["id"]);
+        // deleteProduct($id);
+        // break;
+
+    return $response;
+});
+
+$app->delete('/api/catalogue/{id}', function ($request, $response, $args) {
+    // Delete book identified by $args['id']
+    // ...
+
+    return $response;
+});
+
+// PUT
+
+$app->put('/api/user/{id}', function ($request, $response, $args) {
+    // Update book identified by $args['id']
+    // ...
+
+    return $response;
+});
+
+
+///////////////////////////
+// API Catalogue Produit //
+///////////////////////////
+
+
+$filename = './assets/mock/produits.json';
+$data = file_get_contents($filename);
+$array = json_decode($data);
+
+// $app->get('/api/catalogue', function (Request $request, Response $response, $args) {
+//     global $array;
+//     $response->getBody()->write(json_encode ($array));
 //     return $response;
 // });
 
-// $app->delete('/books/{id}', function ($request, $response, $args) {
-//     // Delete book identified by $args['id']
-//     // ...
-//
-//     return $response;
-// });
-//
-// // PUT
-//
-// $app->put('/api/user/{id}', function ($request, $response, $args) {
-//     // Update book identified by $args['id']
-//     // ...
-//
-//     return $response;
-// });
+$app->get('/api/catalogue', function (Request $request, Response $response, $args) {
+    // $json = file_get_contents("./assets/mock/produits.json");
+    // $array = json_decode($json, true);
+    // $response->getBody()->write(json_encode ($array));
+    // return $response;
+});
+
+
 
 
 $options = [
@@ -108,9 +145,9 @@ $options = [
     "algorithm" => ["HS256"],
     "secret" => JWT_SECRET,
     "path" => ["/api"],
-    "ignore" => ["/api/hello","/api/login","/api/createUser"],
+    "ignore" => ["/api/hello","/api/login","/api/createUser", "/api/catalogue"],
     "error" => function ($response, $arguments) {
-        $data = array('ERREUR' => 'Connexion', 'ERREUR' => 'JWT Non valide');
+        $data = array('ERREUR' => 'Connexion', 'ERREUR' => 'Le token JWT est invalide');
         $response = $response->withStatus(401);
         return $response->withHeader("Content-Type", "application/json")->getBody()->write(json_encode($data));
     }
